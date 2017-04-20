@@ -17,10 +17,11 @@ data APIVersion = V1
 instance Show APIVersion where
     show V1 = "1"
 
-data QueryLang = Gremlin | MQL
+data QueryLang = Gizmo | GraphQL | MQL
 
 instance Show QueryLang where
-  show Gremlin = "gremlin"
+  show Gizmo   = "gizmo"
+  show GraphQL = "graphql"
   show MQL     = "mql"
 
 data CayleyConfig = CayleyConfig
@@ -30,13 +31,13 @@ data CayleyConfig = CayleyConfig
   , queryLang  :: QueryLang
   } deriving (Show)
 
--- | CayleyConfig { serverPort = 64210 , serverName = "localhost" , apiVersion = V1 , queryLang  = Gremlin }
+-- | CayleyConfig { serverPort = 64210 , serverName = "localhost" , apiVersion = V1 , queryLang  = Gizmo }
 defaultCayleyConfig :: CayleyConfig
 defaultCayleyConfig = CayleyConfig
   { serverPort = 64210
   , serverName = "localhost"
   , apiVersion = V1
-  , queryLang  = Gremlin
+  , queryLang  = Gizmo
   }
 
 data CayleyConnection = CayleyConnection (CayleyConfig, Manager)
